@@ -13,7 +13,6 @@ class MigrationService {
       if (kDebugMode) {
         print('Migrando dados da versão $currentVersion para $_targetVersion...');
       }
-      // Aqui entraria a lógica de conversão de dados legados (v1 -> v2)
       await prefs.setInt(_versionKey, _targetVersion);
     }
   }

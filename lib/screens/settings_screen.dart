@@ -7,7 +7,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Ao usar watch, qualquer mudança no state refaz o build desta tela
     final settings = context.watch<SettingsService>();
 
     return ListView(
@@ -23,7 +22,6 @@ class SettingsScreen extends StatelessWidget {
             children: [
               SwitchListTile(
                 secondary: const Icon(Icons.dark_mode),
-                // Passando pelo tradutor!
                 title: Text(settings.translate('Modo Escuro')),
                 value: settings.isDarkMode,
                 onChanged: settings.toggleTheme,

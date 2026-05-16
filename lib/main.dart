@@ -63,7 +63,6 @@ class MainTabController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Escuta as mudanças de idioma para recarregar as abas
     final settings = context.watch<SettingsService>();
 
     return DefaultTabController(

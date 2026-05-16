@@ -23,10 +23,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         nome: _nomeController.text,
         email: _emailController.text,
         dataCadastro: DateTime.now(),
-        pontuacao: 150, // Bônus por engajamento!
+        pontuacao: 150,
       );
       _box.put('myProfile', profile);
-      FocusScope.of(context).unfocus(); // Esconde o teclado
+      FocusScope.of(context).unfocus();
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Perfil salvo com sucesso!'), backgroundColor: Colors.green),
       );
@@ -66,7 +66,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 @override
   Widget build(BuildContext context) {
     final profile = _box.get('myProfile');
-    // Escutando as configurações para o formulário
     final settings = context.watch<SettingsService>();
 
     return SingleChildScrollView(

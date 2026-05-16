@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _loadToken(); // Carrega silenciosamente ao abrir o app
+    _loadToken();
   }
 
   String _generateRandomToken() {
@@ -29,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
     ));
   }
 
-  // Função interna apenas para atualizar o estado inicial
   Future<void> _loadToken() async {
     final token = await _storageService.getToken();
     setState(() {
@@ -37,16 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  // --- NOVA FUNÇÃO: Recuperação Manual do Token ---
   Future<void> _recoverToken() async {
     final settings = context.read<SettingsService>();
     
-    // Feedback visual de carregamento
     setState(() {
       _displayedToken = settings.translate('Buscando...');
     });
 
-    // Simulamos um leve delay de 500ms apenas para o usuário perceber a ação de busca
     await Future.delayed(const Duration(milliseconds: 500));
 
     final token = await _storageService.getToken();
@@ -130,7 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 32),
           
-          // Botão 1: Gerar e Salvar
           ElevatedButton.icon(
             onPressed: _saveToken,
             icon: const Icon(Icons.vpn_key),
@@ -139,7 +134,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 12),
           
-          // Botão 2: Recuperar (Novo)
           ElevatedButton.icon(
             onPressed: _recoverToken,
             icon: const Icon(Icons.download),
@@ -152,7 +146,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 12),
           
-          // Botão 3: Deletar
           OutlinedButton.icon(
             onPressed: _deleteToken,
             icon: const Icon(Icons.delete, color: Colors.red),
